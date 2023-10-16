@@ -9,6 +9,9 @@ import { AuthGuardService } from 'src/app/services/auth-guard.service';
 import { EstudoPrevioService } from 'src/app/services/estudo-previo.service';
 import { SituacaoAprendizagemService } from 'src/app/services/situacaoaprendizagem.service';
 import { UnidadeCurricularService } from 'src/app/services/unidade-curricular.service';
+import { Location } from '@angular/common';
+
+
 
 @Component({
   selector: 'app-estudo-previo',
@@ -32,6 +35,7 @@ export class EstudoPrevioComponent implements OnInit {
   idSituacao: number;
   situacaoAprendizagem: SituacaoAprendizagem;
   atividadeTipoId: number;
+  
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -39,8 +43,15 @@ export class EstudoPrevioComponent implements OnInit {
     private atividadeService: AtividadeService,
     private authGuardService: AuthGuardService,
     private situacaoAprendizagemService: SituacaoAprendizagemService,
+    private location: Location,
+    
   ) {
   }
+
+  goBack(): void {
+    this.location.back();
+  }
+  
   ngOnInit(): void {
 
     this.idEstudanteUsuarioLogado = this.authGuardService.getIdEstudanteUsuarioLogado();

@@ -1,178 +1,145 @@
-<!-- <div *ngIf="loading else carregado">
-    <mat-progress-bar mode="buffer"></mat-progress-bar>
-</div> -->
-<div class="row">
-  <!-- <div style="display: flex; justify-content: center; align-items: center"></div> -->
-  <!-- <mat-card id="mat-card">
-    <mat-card-content>
-      <div>
-        <p class="titulo">Situação de aprendizagem:</p>
-        <p>{{ atividades[0].situacaoAprendizagem.descricao }}</p>
-      </div>
-      <div>
-        <p class="titulo">Atividade:</p>
-        <p>{{ atividades[0].descricao }}</p>
-      </div>
-      <div>
-        <p class="titulo">Início:</p>
-        <p>
-          {{
-            atividades[0].dataInicio
-              | date : "EEEE, HH:mm - dd/MM/yyyy " : " +0000" : "pt-BR"
-              | titlecase
-          }}
-        </p>
-      </div>
-      <div>
-        <p class="titulo">Término:</p>
-        <p>
-          {{
-            atividades[0].dataFim
-              | date : "EEEE, HH:mm - dd/MM/yyyy " : " +0000" : "pt-BR"
-              | titlecase
-          }}
-        </p>
-      </div>
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop"
-      >
-        Anexar
-      </button>
-    </mat-card-content>
-    <div
-      class="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+
+<div style = "color: #6185ce;" class="col-12" *ngIf="atividadeTipoId===1">
+<div class="container">
+<button (click)="goBack()">Voltar</button>
+  <div class="row">
+
+      <h1>Programação II</h1>
+      <hr class="bg-secondary">
+  </div>
+
+  <div class="row">
+    <div class="col-9">
+      <div class="card">
+        <div style = "color: #0F2552;" class="card-body">
+          <h5 class="card-title">{{ atividade.situacaoAprendizagem.titulo }}</h5>
+
+          <div style = "color: #0F2552;">
+            <p class="titulo">Situação de aprendizagem:</p>
+            <p>{{ atividade.situacaoAprendizagem.descricao }}</p>
           </div>
-          <div class="modal-body">
-            <input
-              class="form-control"
-              type="file"
-              (change)="onFileSelected($event)"
-              multiple
-            />
-            <label></label>
+  
+          <div>
+            <p class="titulo">Atividade:</p>
+            <p>{{ atividade.descricao }}</p>
           </div>
-          <div class="modal-footer">
-            <button
-              mat-raised-button
-              type="submit"
-              (click)="enviarArquivo()"
-              [disabled]="!file"
-            >
-              Enviar
-            </button>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Resposta:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
+
+          <button id ="enviar"class="btn btn-primary">Enviar atividade</button>
         </div>
+      
       </div>
     </div>
-  </mat-card> -->
-  <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12 col-12">
 
-    <div class="card flex" *ngIf="atividadeTipoId===1">
-      <p-card>
-        <div>
-          <p class="titulo">Título:</p>
-          <p>{{ atividade.situacaoAprendizagem.titulo }}</p>
+    <!-- Aside -->
+    <div class="col-3">
+      <aside style = "color: #0F2552;">
+        <h2>Status da tarefa:</h2>
+        <div style = "color: #0F2552;">
+          <p class="titulo">Status de Envio:</p>
+          <p>
+            Não entregue
+          </p>
         </div>
-
-        <div>
-          <p class="titulo">Situação de aprendizagem:</p>
-          <p>{{ atividade.situacaoAprendizagem.descricao }}</p>
-        </div>
-
-        <div>
-          <p class="titulo">Atividade:</p>
-          <p>{{ atividade.descricao }}</p>
-        </div>
-
-        <div>
+        <div style = "color: #0F2552;">
           <p class="titulo">Início:</p>
           <p>
             {{ atividade.dataInicio | date : "EEEE, HH:mm - dd/MM/yyyy " : " +0000" : "pt-BR" | titlecase }}
           </p>
         </div>
 
-        <div>
+        <div style = "color: #0F2552;">
           <p class="titulo">Término:</p>
           <p>
             {{ atividade.dataFim | date : "EEEE, HH:mm - dd/MM/yyyy " : " +0000" : "pt-BR" | titlecase }}
           </p>
         </div>
-        <div class="input-group">
-          <textarea class="form-control" aria-label="With textarea" placeholder="Digite aqui..."></textarea>
-        </div>
-
-        <p-button label="Enviar" (click)="saveToDatabase()" [disabled]="!files"></p-button>
-
-      </p-card>
+      </aside>
     </div>
+  </div>
+</div>
+</div>
+
+
 
     <!-- Atividade com Upload id=2-->
-    <div class="card flex" *ngIf="atividadeTipoId===2">
-      <p-card>
 
-        <div>
-          <p class="titulo">Título:</p>
-          <p>{{ atividade.situacaoAprendizagem.titulo }}</p>
+    <div style = "color: #6185ce;" class="col-12" *ngIf="atividadeTipoId===2">
+      <div class="container">
+      <button (click)="goBack()">Voltar</button>
+        <div class="row">
+      
+            <h1>Programação II</h1>
+            <hr class="bg-secondary">
         </div>
-
-        <div>
-          <p class="titulo">Situação de aprendizagem:</p>
-          <p>{{ atividade.situacaoAprendizagem.descricao }}</p>
+      
+        <div class="row">
+          <div class="col-9">
+            <div class="card">
+              <div style = "color: #0F2552;" class="card-body">
+                <h5 class="card-title">{{ atividade.situacaoAprendizagem.titulo }}</h5>
+      
+                <div style = "color: #0F2552;">
+                  <p class="titulo">Situação de aprendizagem:</p>
+                  <p>{{ atividade.situacaoAprendizagem.descricao }}</p>
+                </div>
+        
+                <div>
+                  <p class="titulo">Atividade:</p>
+                  <p>{{ atividade.descricao }}</p>
+                </div>
+                <input
+                class="form-control"
+                type="file"
+                (change)="onFileSelected($event)"
+                multiple
+              />
+      
+              <p *ngFor="let fileName of filesName">{{ fileName }}</p>
+      
+        
+      
+                <button id ="enviar"class="btn btn-primary">Enviar atividade</button>
+              </div>
+            
+            </div>
+          </div>
+      
+          <!-- Aside -->
+          <div class="col-3">
+            <aside style = "color: #0F2552;">
+              <h2>Status da tarefa:</h2>
+              <div style = "color: #0F2552;">
+                <p class="titulo">Status de Envio:</p>
+                <p>
+                  Não entregue
+                </p>
+              </div>
+              <div style = "color: #0F2552;">
+                <p class="titulo">Início:</p>
+                <p>
+                  {{ atividade.dataInicio | date : "EEEE, HH:mm - dd/MM/yyyy " : " +0000" : "pt-BR" | titlecase }}
+                </p>
+              </div>
+      
+              <div style = "color: #0F2552;">
+                <p class="titulo">Término:</p>
+                <p>
+                  {{ atividade.dataFim | date : "EEEE, HH:mm - dd/MM/yyyy " : " +0000" : "pt-BR" | titlecase }}
+                </p>
+              </div>
+            </aside>
+          </div>
         </div>
+      </div>
+      </div>
 
-        <div>
-          <p class="titulo">Atividade:</p>
-          <p>{{ atividade.descricao }}</p>
-        </div>
-
-        <div>
-          <p class="titulo">Início:</p>
-          <p>
-            {{ atividade.dataInicio | date : "EEEE, HH:mm - dd/MM/yyyy " : " +0000" : "pt-BR" | titlecase }}
-          </p>
-        </div>
-
-        <div>
-          <p class="titulo">Término:</p>
-          <p>
-            {{ atividade.dataFim | date : "EEEE, HH:mm - dd/MM/yyyy " : " +0000" : "pt-BR" | titlecase }}
-          </p>
-        </div>
-
-        <input
-          class="form-control"
-          type="file"
-          (change)="onFileSelected($event)"
-          multiple
-        />
-
-        <p *ngFor="let fileName of filesName">{{ fileName }}</p>
-
-        <p-button label="Enviar" (click)="saveToDatabase()" [disabled]="!files"></p-button>
-      </p-card>
-    </div>
 
     <!-- Apresentação oral id=3 -->
-    <div class="card flex" *ngIf="atividadeTipoId===3">
+    <div class="col-10" *ngIf="atividadeTipoId===3">
       <p-card>
 
         <div>
@@ -181,7 +148,7 @@
         </div>
 
         <div>
-          <p class="titulo">Situação de aprendizagem:</p>
+          <p class="titulo">Situação de aprendizagem  :</p>
           <p>{{ atividade.situacaoAprendizagem.descricao }}</p>
         </div>
 
@@ -211,45 +178,63 @@
     </div>
 
     <!-- Atividade de multipla escolha id=4 -->
-    <div class="card flex" *ngIf="atividadeTipoId===4">
-      <p-card>
-
-        <div>
-          <p class="titulo">Título:</p>
-          <p>{{ atividade.situacaoAprendizagem.titulo }}</p>
+    <div style = "color: #6185ce;" class="col-12" *ngIf="atividadeTipoId===4">
+      <div class="container">
+      <button (click)="goBack()">Voltar</button>
+        <div class="row">
+      
+            <h1>Programação II</h1>
+            <hr class="bg-secondary">
         </div>
-
-        <div>
-          <p class="titulo">Situação de aprendizagem:</p>
-          <p>{{ atividade.situacaoAprendizagem.descricao }}</p>
+      
+        <div class="row">
+          <div class="col-9">
+            <div class="card">
+              <div style = "color: #0F2552;" class="card-body">
+                <h5 class="card-title">{{ atividade.situacaoAprendizagem.titulo }}</h5>
+      
+                <div style = "color: #0F2552;">
+                  <p class="titulo">Situação de aprendizagem:</p>
+                  <p>{{ atividade.situacaoAprendizagem.descricao }}</p>
+                </div>
+        
+                <div>
+                  <p class="titulo">Atividade:</p>
+                  <p>{{ atividade.descricao }}</p>
+                </div>
+            
+      
+                <button id ="enviar"class="btn btn-primary">Iniciar Questionário</button>
+              </div>
+            
+            </div>
+          </div>
+      
+          <!-- Aside -->
+          <div class="col-3">
+            <aside style = "color: #0F2552;">
+              <h2>Status da tarefa:</h2>
+              <div style = "color: #0F2552;">
+                <p class="titulo">Status de Envio:</p>
+                <p>
+                  Não entregue
+                </p>
+              </div>
+              <div style = "color: #0F2552;">
+                <p class="titulo">Início:</p>
+                <p>
+                  {{ atividade.dataInicio | date : "EEEE, HH:mm - dd/MM/yyyy " : " +0000" : "pt-BR" | titlecase }}
+                </p>
+              </div>
+      
+              <div style = "color: #0F2552;">
+                <p class="titulo">Término:</p>
+                <p>
+                  {{ atividade.dataFim | date : "EEEE, HH:mm - dd/MM/yyyy " : " +0000" : "pt-BR" | titlecase }}
+                </p>
+              </div>
+            </aside>
+          </div>
         </div>
-
-        <div>
-          <p class="titulo">Atividade:</p>
-          <p>{{ atividade.descricao }}</p>
-        </div>
-
-        <div>
-          <p class="titulo">Início:</p>
-          <p>
-            {{ atividade.dataInicio | date : "EEEE, HH:mm - dd/MM/yyyy " : " +0000" : "pt-BR" | titlecase }}
-          </p>
-        </div>
-
-        <div>
-          <p class="titulo">Término:</p>
-          <p>
-            {{ atividade.dataFim | date : "EEEE, HH:mm - dd/MM/yyyy " : " +0000" : "pt-BR" | titlecase }}
-          </p>
-        </div>
-
-        <div>
-          <form class="flex align-items-center gap-1">
-            <p-checkbox formControlName="city" value="New York" inputId="ny"></p-checkbox>
-            <label for="ny">New York</label>
-          </form>
-        </div>
-      </p-card>
-    </div>
-  </div>
-</div>    
+      </div>
+      </div>
