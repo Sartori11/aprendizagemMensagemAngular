@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Mensagem } from '../models/Mensagem';
 import { Observable } from 'rxjs';
+import { Usuario } from "src/app/models/Usuario";
 
 const httpOptions = {
   headers: new HttpHeaders ({
@@ -29,4 +30,9 @@ export class MensagemService {
   NovaMensagem(mensagem: Mensagem): Observable<any>{
     return this.https.post<Mensagem>(this.url, mensagem, httpOptions);
   }
+
+
+
+
+
 }

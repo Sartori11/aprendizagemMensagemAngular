@@ -15,7 +15,7 @@ import { conversa } from './mockdata';
   styleUrls: ['./mensagens.component.css']
 })
 export class MensagensComponent implements OnInit {
-
+  novaMensagemTexto: string = '';
   activeIndex = 0;
   chat = false;
   estudante: Estudante;
@@ -64,8 +64,35 @@ export class MensagensComponent implements OnInit {
 
     })
 
+    
+    
+    
   }
 
+  
+
+  adicionarMensagemAoChat(mensagem: Mensagem) {
+    this.mensagens.push(mensagem);
+  }
+
+  enviarMensagem() {
+    // Criar uma nova mensagem
+    const novaMensagem = new Mensagem();
+    novaMensagem.id = 3;
+    novaMensagem.mensagemTexto = this.novaMensagemTexto;
+    novaMensagem.data = new Date().toISOString();
+    novaMensagem.status = 1;
+
+    // Adicionar a nova mensagem ao chat
+    this.adicionarMensagemAoChat(novaMensagem);
+
+    // Enviar a mensagem para o serviço
+    this.mensagemService.NovaMensagem(novaMensagem).subscribe(() => {
+      // Limpar o campo de texto após enviar a mensagem
+      this.novaMensagemTexto = '';
+    });
+  }
+  
 
   toggleChat(usuario?: Usuario){
 
